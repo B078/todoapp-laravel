@@ -6,7 +6,8 @@
 
 
     @foreach($tasks as $task)
-    <div class="card @if($task->isCompleted()) border-success  @endif" style="margin-bottom: 20px">
+    <div class="card @if($task->isCompleted()) border border-success border-2 @endif" style="margin-bottom: 20px">
+
         <div class="card-body">
             <p> 
                 {{ $task->description}} 
