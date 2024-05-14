@@ -5,6 +5,15 @@
 @section('content')
     
 <h1>New Tasks</h1>
+@if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li> {{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 <form action="/tasks" method="POST">
     <div class="form-group">
