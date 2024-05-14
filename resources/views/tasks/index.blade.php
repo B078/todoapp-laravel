@@ -11,13 +11,21 @@
             <p> 
                 {{ $task->description}} 
             </p>
+            @if(!$task->isCompleted())
+                <form action="/tasks/{{ $task->id }}" method="POST">
+                    @method('PATCH')
+                    @csrf
+                    
+                    <button class="btn btn-light btn-block d-grid w-100" input="submit">Complete</button>
+                </form>
+            @else
             <form action="/tasks/{{ $task->id }}" method="POST">
-                @method('PATCH')
+                @method('DELETE')
                 @csrf
-                @if(!$task->isCompleted())
-                <button class="btn btn-light btn-block d-grid w-100" input="submit">Complete</button>
-                @endif
+                
+                <button class="btn btn-danger btn-block d-grid w-100" input="submit">Delete</button>
             </form>
+            @endif
         </div>
     </div>
     @endforeach
